@@ -2,4 +2,4 @@
 --ivory: #f9fbf2ff; = White
 --light-cyan: #d7f9ffff; = Light Blue
 --jordy-blue: #afcbffff; = Blue
---oxford-blue: #0e1c36ff; = Dark Blue
+--oxford-blue: #0e1c36ff; = Dark blue
