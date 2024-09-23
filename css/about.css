@@ -1,0 +1,191 @@
+/* Reset default margin and padding */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Gradient Background Wrapper */
+.gradient-background {
+    background: linear-gradient(-45deg, #0e1c36ff, #1d2a48ff, #4682b4ff, #d7f9ffff);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    position: relative;
+    overflow: hidden;
+    height: 100vh; /* Full viewport height */
+    width: 100vw;  /* Full viewport width */
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Gradient Animation */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Heading */
+h1 {
+    font-size: 4rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+    animation: slideDown 1.5s ease-out;
+}
+
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Paragraph styling */
+p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Social media container with table layout */
+.social-table {
+    width: 100%;
+    margin-top: 40px;
+    animation: tableFadeIn 2s ease-in-out;
+}
+
+@keyframes tableFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Table styles */
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table td {
+    padding: 20px;
+    position: relative; /* For absolute positioning of the icon */
+}
+
+/* Icon styling */
+.social-icons a {
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    position: relative;
+    z-index: 1; /* Position above the circular background */
+}
+
+.social-icons a::before {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    z-index: 0; /* Behind the icon */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.social-icons a:hover {
+    transform: scale(1.3);
+    color: #d7f9ff;
+}
+
+/* Icons appear with a zoom-in effect */
+.social-icons a {
+    animation: zoomIn 1s ease forwards;
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Footer styling */
+footer {
+    margin-top: 50px;
+    color: #ffffffaa;
+    font-size: 0.9rem;
+    animation: fadeUp 2s ease-in-out;
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Decorative underline animation */
+.decorative-line {
+    width: 300px;
+    height: 6px;
+    background-color: white;
+    margin: 10px auto;
+    animation: growLine 1.5s ease-out;
+}
+
+@keyframes growLine {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 300px;
+    }
+}
