@@ -4,4 +4,4 @@
 --jordy-blue: #afcbffff; = Blue
 --oxford-blue: #0e1c36ff; = Dark blue
 
-314259 = some dark blue for gradient 
+4C6174= some dark blue for gradient 

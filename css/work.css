@@ -1,0 +1,76 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+    height: 100%;
+}
+
+.gradient-background {
+    background: linear-gradient(-45deg, #0e1c36ff, #1d2a48ff, #4682b4ff, #d7f9ffff);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    position: relative; /* For positioning the falling text */
+    overflow: hidden; /* Hide text overflow */
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+
+ul {
+    list-style-type: none;  
+    padding: 0;
+    padding-left: 20px;
+}
+
+li {
+    margin: 10px 0;
+    transition: transform 0.5s ease;
+}
+
+a {
+    position: relative; /* Position relative for the pseudo-element */
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    transition: transform 0.3s ease;
+    display: block;
+    padding: 22.2px;
+}
+
+a::before {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute;
+    left: -10px; /* Adjust as needed */
+    top: 80%;
+    transform: translateY(-50%);
+    width: 5px; /* Width of the glow line */
+    height: calc(100% + 10px); /* Full height of the link */
+    background: white; /* Color of the glow line */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Transition for the glow effect */
+    box-shadow: 0 0 10px white; /* Glow effect */
+    border-radius: 3px;
+}
+
+a:hover::before {
+    opacity: 1; /* Show the glow line on hover */
+}
+
+.description {
+    padding-left: 22px;
+}
+
+li:hover {
+    transform: translateX(200px); /* Shifts the entire list item (link + description) 10px to the right on hover */
+}
