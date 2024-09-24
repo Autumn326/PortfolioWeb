@@ -1,195 +1,142 @@
-/* General Reset */
-body, html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Merriweather', serif;
-    height: 100%;
-    overflow: auto; /* Ensure scrolling is allowed */
-}
 
-.gradient-background {
-    background: linear-gradient(-45deg, #0e1c36ff, #1d2a48ff, #4682b4ff);
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
-    position: relative; /* For positioning the falling text */
-    overflow: hidden; /* Hide text overflow */
-}
-
-/* Vertical Scrolling Text Effect */
-.vertical-text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Prevent interaction with the text */
-    overflow: hidden; /* Hide text overflow */
-    z-index: -1; /* Place behind the main content */
-}
-
-.vertical-text span {
-    position: absolute;
-    color: white;
-    font-size: 2em;
-    opacity: 0.1; /* Light visibility */
-    filter: blur(4px); /* Subtle blur */
-    white-space: nowrap; /* Prevent line breaks */
-    animation: verticalScroll 10s linear infinite;
-}
-
-.vertical-text span:nth-child(1) {
-    animation-duration: 15s;
-    left: 10%;
-}
-
-.vertical-text span:nth-child(2) {
-    animation-duration: 18s;
-    left: 20%;
-}
-
-.vertical-text span:nth-child(3) {
-    animation-duration: 20s;
-    left: 30%;
-}
-
-.vertical-text span:nth-child(4) {
-    animation-duration: 22s;
-    left: 40%;
-}
-
-.vertical-text span:nth-child(5) {
-    animation-duration: 25s;
-    left: 50%;
-}
-
-@keyframes verticalScroll {
-    0% {
-        top: -100%;
-    }
-    100% {
-        top: 100%;
-    }
-}
-
-/* Keyframes for Gradient Animation */
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 100% 100%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
-}
-
-/* Ensure Full Height and Scrolling for Sections */
-.homepage, .next-section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative; /* For positioning content on top of background text */
-}
-
-/* Example Styling for Content */
-h1 {
-    font-size: 4em;
-    margin-bottom: 30px;
-    color: white;
-    position: relative; /* For positioning content on top of background text */
-}
-
-/* Profile Picture Styling */
-.profile-pic {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    margin-bottom: 30px;
-    border: 5px solid #fff;
-}
-
-/* Scroll Indicator */
-.scroll-indicator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #fff;
-    font-size: 1.2em;
-    margin-top: 20px;
-}
-
-.arrow {
-    width: 20px;
-    height: 20px;
-    border-left: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-    transform: rotate(-45deg);
-    margin-top: 5px;
-}
-
-/* Button Container Styling */
-.button-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-}
-
-/* Action Button Styling */
-.action-button {
-    padding: 15px;
-    font-size: 1.2em;
-    color: transparent; /* Initially hide the text */
-    background-color: #333;
-    border: none;
-    border-radius: 50px; /* Rounded corners */
-    width: 80px; /* Default width for circle appearance */
-    height: 60px; /* Default height */
-    text-align: center;
-    line-height: 60px; /* Center text vertically */
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease, width 0.3s ease, height 0.3s ease;
-    position: relative;
-    overflow: hidden; /* Hide text overflow */
-    display: flex;
-    align-items: center; /* Center text vertically */
-    justify-content: center; /* Center text horizontally */
-    animation: jiggle 2s infinite; /* Jiggling effect */
-}
-
-.action-button:hover {
-    background-color: #ffe566;
-    color: black; /* Show the text color on hover */
-    transform: scale(1.2); /* Expand the button */
-    width: 200px; /* Expanded width */
-    height: 60px; /* Keep the height same to center text */
-    line-height: 60px; /* Center text vertically */
-}
-
-.action-button::before {
-    content: attr(data-text); /* Use custom attribute to set button text */
-    color: #ffeaa7; /* Button text color */
-    font-size: 1em;
-    opacity: 0; /* Initially hide text */
-    transition: opacity 0.3s ease;
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 5px;
-    background: none;
-    transition: width 0.3s ease, opacity 0.3s ease;
-    opacity: 0;
-}
-
-li:hover::before {
-    width: 5px;
-    opacity: 1; /* Makes the glowing bar visible on hover */
-    background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,0)); /* Gradient effect for the glowing bar */
-    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.8); /* Glowing effect */
-}
+.cabin-text {
+    font-family: "Cabin", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 20;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+  }
+  
+  /* General Reset */
+  body, html {
+      margin: 0;
+      padding: 0;
+      overflow: auto; /* Ensure scrolling is allowed */
+  }
+  
+  /* Gradient Background Wrapper */
+  .gradient-background {
+      background: linear-gradient(-45deg, #0e1c36ff, #1d2a48ff, #4682b4ff);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+      position: relative; /* For positioning the falling text */
+      overflow: hidden; /* Hide text overflow */
+      min-height: 100vh;
+  }
+  
+  
+  /* Keyframes for Gradient Animation */
+  @keyframes gradientAnimation {
+      0% {
+          background-position: 0% 0%;
+      }
+      50% {
+          background-position: 100% 100%;
+      }
+      100% {
+          background-position: 0% 0%;
+      }
+  }
+  
+  .container{
+      display: flex;
+      justify-content: space-between; /* Space between the homepage and next section */
+      align-items: center; /* Vertically center both sections */
+      padding: 40px; /* Padding from the edge of the screen */
+  }
+  
+  .homepage {
+      flex: 1; /* Allow homepage to take up 50% of space */
+      margin-right: 20px; /* Space between homepage and next section */
+      padding-left: 60px;
+  }
+  
+  .next-section {
+      flex: 1; /* Allow next section to take up 50% of space */
+      display: flex;
+      justify-content: center; /* Center buttons in the next section */
+  }
+  
+  .content{
+      text-align: center;
+  }
+  
+  /* Example Styling for Content */
+  h1 {
+      font-size: 40px;
+      font-family: "Cabin", sans-serif;
+      margin-bottom: 30px;
+      color: white;
+      position: relative; /* For positioning content on top of background text */
+  }
+  
+  /* Profile Picture Styling */
+  .profile-pic {
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      margin-bottom: 30px;
+      border: 5px solid #fff;
+  }
+  
+  
+  /* Button Container Styling */
+  .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+  }
+  
+  /* Action Button Styling */
+  .action-button {
+      padding: 15px;
+      font-size: 1.2em;
+      color: transparent; /* Initially hide the text */
+      background-color:  #ffede1ff;
+      border: none;
+      border-radius: 50px; /* Rounded corners */
+      width: 80px; /* Default width for circle appearance */
+      height: 60px; /* Default height */
+      text-align: center;
+      line-height: 60px; /* Center text vertically */
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease, width 0.3s ease, height 0.3s ease;
+      position: relative;
+      display: flex;
+      align-items: center; /* Center text vertically */
+      justify-content: center; /* Center text horizontally */
+      animation: jiggle 2s infinite; /* Jiggling effect */
+  }
+  
+  .action-button:hover {
+      background-color: #9955bb;
+      color: white; /* Show the text color on hover */
+      transform: scale(1.2); /* Expand the button */
+      width: 200px; /* Expanded width */
+      height: 60px; /* Keep the height same to center text */
+      line-height: 60px; /* Center text vertically */
+  }
+  
+  .action-button::before {
+      content: attr(data-text); /* Use custom attribute to set button text */
+      color: white; /* Button text color */
+      font-size: 1em;
+      opacity: 0; /* Initially hide text */
+      transition: opacity 0.3s ease;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+  
+  .action-button:hover::before {
+      opacity: 1; /* Show text on hover */
+  }
+  
+  /* Jiggling Animation */
+  @keyframes jiggle {
+      0% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
+      100% { transform: rotate(-2deg); }
+  }
