@@ -72,7 +72,7 @@ body, html {
     font-size: 150px;
     font-family: "Cabin", sans-serif;
     margin: 0;
-    color: white;
+    color: #ffede1ff;
     text-transform: uppercase;
     letter-spacing: 5px;
     animation: jiggleName 2s infinite ease-in-out, randomPulse 4s infinite ease-in-out;
@@ -118,8 +118,11 @@ body, html {
 /* Action Button Styling */
 .action-button {
     padding: 10px;
+<<<<<<< HEAD
     font-size: 1.2em;
     color: transparent; /* Initially hide the text */
+=======
+>>>>>>> d4c9db8bdf9e186c9e524458713253c13904040d
     background-color: #ffede1ff;
     border: none;
     border-radius: 50px; /* Rounded corners */
@@ -150,6 +153,19 @@ body, html {
     background-color: #9955bb;
     color: white;
     transform: scale(1.1);
+}
+
+.button-container a {
+    font-size: 1.2em;
+    text-decoration: none;
+    color: black;
+    font-family: "Cabin", "Sans-serif";
+    width: inherit;
+}
+
+.button-container a:active {
+    text-decoration: none;
+    color: white;
 }
 
 /* Jiggle Animation for Buttons */
