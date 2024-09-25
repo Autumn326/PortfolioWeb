@@ -1,10 +1,16 @@
+.cabin-text {
+    font-family: "Cabin", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 20;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
 /* General styles */
 body, html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Merriweather', serif;
-    height: 100%;
+    font-family: "Cabin", sans-serif;
 }
 
 .gradient-background {
@@ -13,6 +19,8 @@ body, html {
     animation: gradientAnimation 15s ease infinite;
     position: relative;
     overflow: hidden;
+    min-height: 100vh; /* Ensure the background covers the viewport height */
+    width: 100vw; /* Ensure the background spans the full width */
 }
 
 @keyframes gradientAnimation {
