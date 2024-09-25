@@ -1,142 +1,285 @@
-
 .cabin-text {
     font-family: "Cabin", sans-serif;
     font-optical-sizing: auto;
     font-weight: 20;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-  }
-  
-  /* General Reset */
-  body, html {
-      margin: 0;
-      padding: 0;
-      overflow: auto; /* Ensure scrolling is allowed */
-  }
-  
-  /* Gradient Background Wrapper */
-  .gradient-background {
-      background: linear-gradient(-45deg, #0e1c36ff, #1d2a48ff, #4682b4ff);
-      background-size: 400% 400%;
-      animation: gradientAnimation 15s ease infinite;
-      position: relative; /* For positioning the falling text */
-      overflow: hidden; /* Hide text overflow */
-      min-height: 100vh;
-  }
-  
-  
-  /* Keyframes for Gradient Animation */
-  @keyframes gradientAnimation {
-      0% {
-          background-position: 0% 0%;
-      }
-      50% {
-          background-position: 100% 100%;
-      }
-      100% {
-          background-position: 0% 0%;
-      }
-  }
-  
-  .container{
-      display: flex;
-      justify-content: space-between; /* Space between the homepage and next section */
-      align-items: center; /* Vertically center both sections */
-      padding: 40px; /* Padding from the edge of the screen */
-  }
-  
-  .homepage {
-      flex: 1; /* Allow homepage to take up 50% of space */
-      margin-right: 20px; /* Space between homepage and next section */
-      padding-left: 60px;
-  }
-  
-  .next-section {
-      flex: 1; /* Allow next section to take up 50% of space */
-      display: flex;
-      justify-content: center; /* Center buttons in the next section */
-  }
-  
-  .content{
-      text-align: center;
-  }
-  
-  /* Example Styling for Content */
-  h1 {
-      font-size: 40px;
-      font-family: "Cabin", sans-serif;
-      margin-bottom: 30px;
-      color: white;
-      position: relative; /* For positioning content on top of background text */
-  }
-  
-  /* Profile Picture Styling */
-  .profile-pic {
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;
-      margin-bottom: 30px;
-      border: 5px solid #fff;
-  }
-  
-  
-  /* Button Container Styling */
-  .button-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: center;
-  }
-  
-  /* Action Button Styling */
-  .action-button {
-      padding: 15px;
-      font-size: 1.2em;
-      color: transparent; /* Initially hide the text */
-      background-color:  #ffede1ff;
-      border: none;
-      border-radius: 50px; /* Rounded corners */
-      width: 80px; /* Default width for circle appearance */
-      height: 60px; /* Default height */
-      text-align: center;
-      line-height: 60px; /* Center text vertically */
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease, width 0.3s ease, height 0.3s ease;
-      position: relative;
-      display: flex;
-      align-items: center; /* Center text vertically */
-      justify-content: center; /* Center text horizontally */
-      animation: jiggle 2s infinite; /* Jiggling effect */
-  }
-  
-  .action-button:hover {
-      background-color: #9955bb;
-      color: white; /* Show the text color on hover */
-      transform: scale(1.2); /* Expand the button */
-      width: 200px; /* Expanded width */
-      height: 60px; /* Keep the height same to center text */
-      line-height: 60px; /* Center text vertically */
-  }
-  
-  .action-button::before {
-      content: attr(data-text); /* Use custom attribute to set button text */
-      color: white; /* Button text color */
-      font-size: 1em;
-      opacity: 0; /* Initially hide text */
-      transition: opacity 0.3s ease;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-  }
-  
-  .action-button:hover::before {
-      opacity: 1; /* Show text on hover */
-  }
-  
-  /* Jiggling Animation */
-  @keyframes jiggle {
-      0% { transform: rotate(-2deg); }
-      50% { transform: rotate(2deg); }
-      100% { transform: rotate(-2deg); }
-  }
+}
+
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+/* Gradient Background Wrapper */
+.gradient-background {
+    background: linear-gradient(-45deg, #0e1c36ff, #1d2a48ff, #4682b4ff);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Keyframes for Gradient Animation */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+/* Container Styling */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Left Section Styling (Name) */
+.left-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.name-container {
+    padding-left: 20px;
+}
+
+/* Styling for Dylan Prado Name */
+/* Styling for Dylan Prado Name with Subtle Glow */
+.name {
+    font-size: 150px;
+    font-family: "Cabin", sans-serif;
+    margin: 0;
+    color: #ffede1ff;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    animation: jiggleName 2s infinite ease-in-out, randomPulse 4s infinite ease-in-out;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 40px rgba(255, 255, 255, 0.1);
+}
+/* Animation for Jiggle Effect */
+@keyframes jiggleName {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+/* Right Section Styling (Image and Buttons) */
+.right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Profile Picture Styling */
+.profile-pic {
+    width: 30vw; /* Responsive size based on viewport width */
+    max-width: 400px; /* Limit the maximum size */
+    height: auto; /* Ensure aspect ratio is maintained */
+    border-radius: 50%;
+    margin-bottom: 30px;
+    border: 5px solid #fff;
+    margin-top: 20px;
+}
+
+
+/* Button Container Styling */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+}
+/* Action Button Styling */
+.action-button {
+    padding: 10px;
+<<<<<<< HEAD
+    font-size: 1.2em;
+    color: transparent; /* Initially hide the text */
+=======
+>>>>>>> d4c9db8bdf9e186c9e524458713253c13904040d
+    background-color: #ffede1ff;
+    border: none;
+    border-radius: 50px; /* Rounded corners */
+    width: 180px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px; /* Center text vertically */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    animation: jiggleButton 2s infinite;
+    /* Remove underline */
+    text-decoration: none; /* Ensures no underline */
+    color: white; /* Default text color for buttons */
+}
+
+.action-button:hover {
+    background-color: #9955bb;
+    color: white; /* Show the text color on hover */
+    transform: scale(1.1); /* Expand the button */
+}
+
+/* Button Hover Effect */
+.action-button:hover {
+    background-color: #9955bb;
+    color: white;
+    transform: scale(1.1);
+}
+
+.button-container a {
+    font-size: 1.2em;
+    text-decoration: none;
+    color: black;
+    font-family: "Cabin", "Sans-serif";
+    width: inherit;
+}
+
+.button-container a:active {
+    text-decoration: none;
+    color: white;
+}
+
+/* Jiggle Animation for Buttons */
+@keyframes jiggleButton {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* Subtle and Randomized Pulsing Glow */
+@keyframes randomPulse {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                     0 0 20px rgba(255, 255, 255, 0.3),
+                     0 0 40px rgba(255, 255, 255, 0.1);
+    }
+    25% {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.6),
+                     0 0 30px rgba(255, 255, 255, 0.4),
+                     0 0 50px rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.4),
+                     0 0 25px rgba(255, 255, 255, 0.2),
+                     0 0 35px rgba(255, 255, 255, 0.1);
+    }
+    75% {
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.5),
+                     0 0 28px rgba(255, 255, 255, 0.3),
+                     0 0 45px rgba(255, 255, 255, 0.15);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                     0 0 20px rgba(255, 255, 255, 0.3),
+                     0 0 40px rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Responsive Styles */
+
+/* Large Screens */
+@media (min-width: 1200px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .name {
+        font-size: 8vw; /* Slightly smaller for large screens */
+    }
+
+    .profile-pic {
+        width: 25vw;
+    }
+}
+
+/* Tablets and Medium Screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .left-section, .right-section {
+        align-items: center;
+    }
+
+    .name-container {
+        padding-left: 0;
+    }
+
+    .name {
+        font-size: 14vw; /* Increase font size for smaller screens */
+    }
+
+    .profile-pic {
+        width: 40vw;
+        max-width: 300px;
+    }
+}
+
+/* Small Screens (Mobile) */
+@media (max-width: 480px) {
+    .name {
+        font-size: 18vw; /* Even larger on small screens */
+    }
+
+    .profile-pic {
+        width: 50vw;
+        max-width: 250px;
+    }
+
+    .action-button {
+        width: 150px;
+        height: 40px;
+        font-size: 1em;
+    }
+}
+
+
+/* Soft Pulsing Glow Animation */
+@keyframes pulseGlow {
+    0% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 
+                     0 0 30px rgba(255, 255, 255, 0.6),
+                     0 0 40px rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        text-shadow: 0 0 40px rgba(255, 255, 255, 1), 
+                     0 0 60px rgba(255, 255, 255, 0.8),
+                     0 0 80px rgba(255, 255, 255, 0.6);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 
+                     0 0 30px rgba(255, 255, 255, 0.6),
+                     0 0 40px rgba(255, 255, 255, 0.4);
+    }
+}
