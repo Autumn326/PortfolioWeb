@@ -1,0 +1,200 @@
+/* General styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+    height: 100%;
+}
+
+.gradient-background {
+    background: linear-gradient(-45deg, #0e1c36ff, #1d2a48ff, #4682b4ff);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+/* Top-left circular button */
+.top-left-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.button {
+    display: inline-block;
+    background-color: #007bff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    text-decoration: none;
+    overflow: hidden; /* To contain ripple */
+    transition: background-color 0.3s ease;
+}
+
+.ripple {
+    position: fixed; /* Existing ripple effect */
+    border-radius: 50%;
+    background: #ffede1;; /* Reduced opacity for global ripple */
+    width: 1000px; /* Initial size; can be adjusted */
+    height: 1000px; /* Initial size; can be adjusted */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Center and scale down */
+    pointer-events: none; /* Prevent interaction */
+    transition: transform 1.5s, opacity 0.1s; /* Animation for ripple */
+    opacity: 0; /* Start invisible */
+    z-index: 999; /* Ensure it appears above other elements */
+}
+
+.button-ripple {
+    position: absolute; /* Position relative to the button */
+    border-radius: 50%;
+    background: rgba(223, 121, 236, 0.5); /* Adjust as needed */
+    width: 100%; /* Start width */
+    height: 100%; /* Start height */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Center and scale down */
+    pointer-events: none; /* Prevent interaction */
+    transition: transform 0.5s, opacity 0.3s; /* Animation for ripple */
+    opacity: 0; /* Start invisible */
+    z-index: 998; /* Ensure it appears below the main ripple */
+}
+
+.button:active .button-ripple {
+    transform: translate(-50%, -50%) scale(1.5); /* Scale up */
+    opacity: 1; /* Fade in */
+}
+
+/* Show ripple when button is clicked */
+.button:active .button-ripple {
+    transform: translate(-50%, -50%) scale(1.5); /* Scale up */
+    opacity: 1; /* Fade in */
+}
+
+/* Active class for persistent ripple */
+.ripple.active {
+    transform: translate(-50%, -50%) scale(4); /* Scale up for effect */
+    opacity: 1; /* Fully visible */
+}
+
+/* Active class for persistent ripple */
+.button-ripple.active {
+    transform: translate(-50%, -50%) scale(1.5); /* Scale up for effect */
+    opacity: 1; /* Fully visible */
+}
+
+/* Arrow inside the button */
+.button::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg); /* Rotate to point left */
+    width: 8px; /* Arrow width */
+    height: 8px; /* Arrow height */
+    border-left: 2px solid white; /* Left part of the arrow */
+    border-bottom: 2px solid white; /* Bottom part of the arrow */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Project link styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+    padding-left: 20px;
+}
+
+li {
+    margin: 10px 0;
+    transition: transform 0.5s ease;
+    margin: 20px 0;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    width: 100%;
+}
+
+li:nth-child(1) {
+    animation-delay: 0.25s;
+}
+li:nth-child(2) {
+    animation-delay: 0.5s;
+}
+li:nth-child(3) {
+    animation-delay: 0.75s;
+}
+li:nth-child(4) {
+    animation-delay: 1s;
+}
+li:nth-child(5) {
+    animation-delay: 1.25s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Only apply the white bar effect to project links */
+ul a {
+    position: relative;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    transition: transform 0.3s ease;
+    display: block;
+    padding: 22.2px;
+}
+
+ul a::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 80%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: calc(100% + 10px);
+    background: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 0 10px white;
+    border-radius: 3px;
+}
+
+ul a:hover::before {
+    opacity: 1;
+}
+
+/* List item hover effect */
+li:hover {
+    transform: translateX(200px);
+}
+
+.description {
+    padding-left: 22px;
+}
