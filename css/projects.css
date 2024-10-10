@@ -70,41 +70,9 @@ body, html {
     z-index: 999; /* Ensure it appears above other elements */
 }
 
-.button-ripple {
-    position: absolute; /* Position relative to the button */
-    border-radius: 50%;
-    background: rgba(223, 121, 236, 0.5); /* Adjust as needed */
-    width: 100%; /* Start width */
-    height: 100%; /* Start height */
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(0); /* Center and scale down */
-    pointer-events: none; /* Prevent interaction */
-    transition: transform 0.5s, opacity 0.3s; /* Animation for ripple */
-    opacity: 0; /* Start invisible */
-    z-index: 998; /* Ensure it appears below the main ripple */
-}
-
-.button:active .button-ripple {
-    transform: translate(-50%, -50%) scale(1.5); /* Scale up */
-    opacity: 1; /* Fade in */
-}
-
-/* Show ripple when button is clicked */
-.button:active .button-ripple {
-    transform: translate(-50%, -50%) scale(1.5); /* Scale up */
-    opacity: 1; /* Fade in */
-}
-
 /* Active class for persistent ripple */
 .ripple.active {
     transform: translate(-50%, -50%) scale(4); /* Scale up for effect */
-    opacity: 1; /* Fully visible */
-}
-
-/* Active class for persistent ripple */
-.button-ripple.active {
-    transform: translate(-50%, -50%) scale(1.5); /* Scale up for effect */
     opacity: 1; /* Fully visible */
 }
 

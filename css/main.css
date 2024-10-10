@@ -40,18 +40,6 @@ body, html {
     }
 }
 
-/* Container Styling */
-.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
 /* Left Section Styling (Name) */
 .left-section {
     flex: 1;
@@ -106,6 +94,17 @@ body, html {
     margin-top: 20px;
 }
 
+/* Container Styling */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
 /* Button Container Styling */
 .button-container {
@@ -115,55 +114,90 @@ body, html {
     align-items: center;
     width: 100%;
 }
+
 /* Action Button Styling */
 .action-button {
-    padding: 10px;
+    position: relative; /* Establishes a positioning context for the pseudo-element */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
     font-size: 1.2em;
-    color: transparent; /* Initially hide the text */
-    background-color: #ffede1ff;
-    border: none;
+    color: white;
+    background-color: transparent;
+    border: none; /* Remove existing border */
     border-radius: 50px; /* Rounded corners */
     width: 180px;
     height: 50px;
     text-align: center;
-    line-height: 50px; /* Center text vertically */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
-    position: relative;
-    display: flex;
-    align-items: center; /* Center text vertically */
-    justify-content: center; /* Center text horizontally */
     animation: jiggleButton 2s infinite;
-    /* Remove underline */
-    text-decoration: none; /* Ensures no underline */
-    color: white; /* Default text color for buttons */
+    text-decoration: none; /* Removes underline */
+    font-family: "Cabin", sans-serif;
+    overflow: hidden; /* Hides the pseudo-element overflow */
 }
 
-.action-button:hover {
-    background-color: #9955bb;
-    color: white; /* Show the text color on hover */
-    transform: scale(1.1); /* Expand the button */
-}
+/* Create the animated border effect using ::before */
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit; /* Ensures the line respects the button's border-radius */
+    border: 2px solid transparent; /* Start as invisible */
+    border-top-color: white; /* Top side to be animated first */
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    box-sizing: border-box;
+    transition: all 0.4s ease-in-out;
+    z-index: -1;
+    transform-origin: top left;  /* Set the starting point at the top left */
+    transform: scale(0); /* Hide the border initially */
+  }
 
-/* Button Hover Effect */
-.action-button:hover {
-    background-color: #9955bb;
-    color: white;
-    transform: scale(1.1);
-}
+/* On hover, animate the line around the button */
+.action-button:hover::before {
+    border-color: white;
+    animation: borderTravel 1s ease forwards; /* Custom animation */
+  }
 
 .button-container a {
     font-size: 1.2em;
     text-decoration: none;
-    color: black;
+    color: white;
     font-family: "Cabin", "Sans-serif";
     width: inherit;
 }
 
-.button-container a:active {
-    text-decoration: none;
-    color: white;
-}
+@keyframes borderTravel {
+    0% {
+      transform: scale(0);
+      border-top-color: white;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+    25% {
+      transform: scaleX(1);
+      border-right-color: white;
+    }
+    50% {
+      transform: scale(1);
+      border-bottom-color: white;
+    }
+    75% {
+      border-left-color: white;
+    }
+    100% {
+      transform: scale(1);
+      border-color: white;
+    }
+  }
+  
 
 /* Jiggle Animation for Buttons */
 @keyframes jiggleButton {
